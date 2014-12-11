@@ -10,10 +10,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-/**
- *
- * @author alam0403
- */
 public class GraphicsTest implements Runnable {
     public AppWindow window = null;
     private boolean isRunning = false;
@@ -35,7 +31,6 @@ public class GraphicsTest implements Runnable {
         
         new Thread(this).start();
     }
-    
     
     @Override
     public void run() {
@@ -78,6 +73,7 @@ public class GraphicsTest implements Runnable {
 				updates = 0;
 			}
 			
+			// Prevent the program from running too fast.
 			try {
 				Thread.sleep(Math.max(0, (long) ((System.nanoTime() - prevTime + OPTIMAL_FPS_TIME) / 1000000)));
 			} catch (InterruptedException e) {
@@ -106,6 +102,7 @@ public class GraphicsTest implements Runnable {
             }
 
             Thread.yield();
+            
         } finally {
             if (g != null) {
                 g.dispose();
